@@ -6,30 +6,26 @@ describe('IMDB Req_id 1.5, ', () => {
   const menuOptionTitle = 'Celebs'
   const tvShowTitleElement = '[data-testid="tabbed-page-title"]'
 
-  const currentMonthAndYear = commonElements.currentDateCalculation('MM-YY')
+  const currentMonthAndDate = commonElements.currentDateCalculation('MM-DD')
   const currenYearAndMonth = commonElements.currentDateCalculation('YYYY-MM')
-  const currenYearMonthDate =
-    commonElements.endOfCurrentMonthCalculation('YYYY-MM-DD')
-  const fourtyYearsBackDate =
-    commonElements.fourtyYearsBackCalculation('YYYY-MM-DD')
-  const fourtyYearsBackYearAndMonth =
-    commonElements.fourtyYearsBackCalculation('YYYY-MM')
+  const currenYearMonthDate = commonElements.endOfCurrentMonthCalculation('YYYY-MM-DD')
+  const fourtyYearsBackDate = commonElements.fourtyYearsBackCalculation('YYYY-MM-DD')
+  const fourtyYearsBackYearAndMonth = commonElements.fourtyYearsBackCalculation('YYYY-MM')
   const startMonthCalculation =
-    commonElements.startOfCurrentMonthCalculation('YYYY-MM-DD')
-  const birthdateDataTestID = `[data-testid="selected-input-chip-list-birthday-${currentMonthAndYear}"]`
+  commonElements.startOfCurrentMonthCalculation('YYYY-MM-DD')
+  const birthdateDataTestID = `[data-testid="selected-input-chip-list-birthday-${currentMonthAndDate}"]`
   const labelDisplayData = commonElements.dateLabelDisplay()
 
+  
   beforeEach(() => {
+    
     cy.visit('')
-    cy.on('uncaught:exception', (err, runnable) => {
-      expect(err.message).to.include('{}')
-      return false
-    })
     cy.viewport('macbook-16')
 
     // it should be possible to visualize navbar and main searchbox container **
     commonElements.checkContainerDisplay(navElementDisplay)
-    cy.get('[data-testid="accept-button"]').click()
+    cy.get('[data-testid="accept-button"]').click({force:true})
+
   })
 
   it('should be possible to filter by birthdate', () => {
@@ -52,7 +48,7 @@ describe('IMDB Req_id 1.5, ', () => {
     //check advance name search
     cy.url().should(
       'contain',
-      `/search/name/?birth_monthday=${currentMonthAndYear}`
+      `/search/name/?birth_monthday=${currentMonthAndDate}`
     )
 
     //delete default search
@@ -73,9 +69,7 @@ describe('IMDB Req_id 1.5, ', () => {
       .clear()
 
     //open date picker
-    // cy.get('[data-testid="birthDate-start"]').focus().type('')
-
-    // 'keydown', { keyCode: 32, which: 32, force: true })
+    // cy.get('[data-testid="birthDate-start"]').focus().trigger('keydown', { keyCode: 32, which: 32, force: true })
 
     cy.get('[data-testid="birthDate-start"]').focus().type(fourtyYearsBackDate)
     cy.get('[data-testid="birthDate-start"]').should(
