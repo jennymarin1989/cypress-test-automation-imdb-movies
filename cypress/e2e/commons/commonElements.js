@@ -7,8 +7,8 @@ const menuElement = 'label[id="imdbHeader-navDrawerOpen"]';
 const navLinkElement = '[data-testid="nav-link-category"]';
 const optionFromMenuElement = '[data-testid="category-expando"]';
 const acceptCookiesElement = '[data-testid="accept-button"]';
-const startDayOfMonth = moment().startOf('month').subtract(40, 'years');
-const lastDayOfMonth = moment().endOf('month');
+const startDayOfMonth = moment().utc().startOf('month').subtract(40, 'years');
+const lastDayOfMonth = moment().utc().endOf('month');
 
 export const advanceSearchResults = '[data-testid="adv-search-get-results"]';
 
@@ -62,7 +62,7 @@ export const commonElements = {
   },
 
   currentDateCalculation: (dateFormat) => {
-    const currentDate = moment().format(dateFormat);
+    const currentDate = moment().utc().format(dateFormat);
     return currentDate;
   },
 
@@ -77,13 +77,13 @@ export const commonElements = {
   },
 
   yesterdayDateCalculation: (dateformat) => {
-    const yesterdayDate = moment().subtract(1, 'days');
+    const yesterdayDate = moment().utc().subtract(1, 'days');
     const yesterdayNewFormat = yesterdayDate.format(dateformat);
     return yesterdayNewFormat;
   },
 
   fourtyYearsBackCalculation: (dateFormat) => {
-    const fourtyYearsBackDate = moment().subtract(40, 'years');
+    const fourtyYearsBackDate = moment().utc().subtract(40, 'years');
     const fourtyYearsBackFormat = fourtyYearsBackDate.format(dateFormat);
     return fourtyYearsBackFormat;
   },
