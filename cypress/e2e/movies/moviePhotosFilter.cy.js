@@ -1,17 +1,12 @@
 import { commonElements } from '../commons/commonElements';
 
 describe('IMDB Req_id 1.3, ', () => {
-  // crear data test en fixtures
-  const navElementDisplay = 'nav[id="imdbHeader"]';
   const tvShowTitleElement = '[data-testid="chart-layout-sidebar-title-container"]';
   const tvShowContainer = '[data-testid="chart-layout-main-column"]';
   const movieTitleElement = '[data-testid="hero__pageTitle"]';
 
   beforeEach(() => {
-    cy.visit('');
-    cy.viewport('macbook-16');
-    commonElements.checkContainerDisplay(navElementDisplay);
-    cy.get('[data-testid="accept-button"]').click({ force: true });
+    commonElements.testInitialSetUp();
     cy.fixture('movies').as('moviesDatafilter');
   });
 

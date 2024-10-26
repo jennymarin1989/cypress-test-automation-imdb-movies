@@ -1,7 +1,6 @@
 import { commonElements } from '../commons/commonElements';
 
 describe('IMDB Req_id 1.5, ', () => {
-  const navElementDisplay = 'nav[id="imdbHeader"]';
   const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
   const currentMonthAndDate = commonElements.currentDateCalculation('MM-DD');
   const currentYearAndMonth = commonElements.currentDateCalculation('YYYY-MM');
@@ -13,10 +12,7 @@ describe('IMDB Req_id 1.5, ', () => {
   const labelDisplayData = commonElements.dateLabelDisplay();
 
   beforeEach(() => {
-    cy.visit('');
-    cy.viewport('macbook-16');
-    commonElements.checkContainerDisplay(navElementDisplay);
-    cy.get('[data-testid="accept-button"]').click({ force: true });
+    commonElements.testInitialSetUp();
     cy.fixture('movies').as('moviesDataBirthdate');
   });
 
@@ -65,7 +61,6 @@ describe('IMDB Req_id 1.5, ', () => {
         .should('have.value', fourtyYearsBackYearAndMonth);
       cy.get('[data-testid="birthDate-start"]').focus().type(startMonthCalculation);
 
-      //valid input ***
       cy.get('[data-testid="birthYearMonth-end"]')
         .type(`${currentYearAndMonth}{enter}`)
         .trigger('input');
@@ -75,7 +70,6 @@ describe('IMDB Req_id 1.5, ', () => {
       cy.get('[data-testid="adv-search-get-results"]').click();
 
       //verify label with results
-
       cy.get('[data-testid="selected-input-chip-list-birthDate-Birth date"] span')
         .contains(`Birth date: ${labelDisplayData}`)
         .invoke('attr', 'style', 'position: relative')

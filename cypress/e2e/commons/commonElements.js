@@ -1,14 +1,23 @@
 import moment from 'moment';
 
+const navElementDisplay = 'nav[id="imdbHeader"]';
 const searchInput = 'input[id="suggestion-search"]';
 const searchButton = 'button[id="suggestion-search-button"]';
 const menuElement = 'label[id="imdbHeader-navDrawerOpen"]';
 const navLinkElement = '[data-testid="nav-link-category"]';
 const optionFromMenuElement = '[data-testid="category-expando"]';
+const acceptCookiesElement = '[data-testid="accept-button"]';
 const startDayOfMonth = moment().startOf('month').subtract(40, 'years');
 const lastDayOfMonth = moment().endOf('month');
 
 export const commonElements = {
+  testInitialSetUp: () => {
+    cy.visit('');
+    cy.viewport('macbook-16');
+    commonElements.checkContainerDisplay(navElementDisplay);
+    cy.get(acceptCookiesElement).click({ force: true });
+  },
+
   checkContainerDisplay: (valueContainer) => {
     cy.get(valueContainer, { timeout: 4000 }).should('be.visible');
   },

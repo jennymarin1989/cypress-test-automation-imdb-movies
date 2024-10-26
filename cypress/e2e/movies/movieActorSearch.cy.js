@@ -1,8 +1,6 @@
 import { commonElements } from '../commons/commonElements';
 
 describe('IMDB Req_id 1.1, Access to actor profile by search and select a completed movie', () => {
-  // crear data test en fixtures
-  const navElementDisplay = 'nav[id="imdbHeader"]';
   const actorElementDisplay = '[data-testid="hero__pageTitle"]';
   const actorListItem = 'div [role="listbox"]';
   const titleID = '[data-testid="hero__primary-text"]';
@@ -11,10 +9,7 @@ describe('IMDB Req_id 1.1, Access to actor profile by search and select a comple
   const signInModalElement = 'div[id="logged-out-modal-v2"]';
 
   beforeEach(() => {
-    cy.visit('');
-    cy.viewport('macbook-16');
-    commonElements.checkContainerDisplay(navElementDisplay);
-    cy.get('[data-testid="accept-button"]').click({ force: true });
+    commonElements.testInitialSetUp();
     cy.fixture('movies').as('moviesDataActorSearch');
   });
 
