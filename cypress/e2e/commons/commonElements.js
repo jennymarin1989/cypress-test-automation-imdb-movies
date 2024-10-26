@@ -10,6 +10,8 @@ const acceptCookiesElement = '[data-testid="accept-button"]';
 const startDayOfMonth = moment().startOf('month').subtract(40, 'years');
 const lastDayOfMonth = moment().endOf('month');
 
+export const advanceSearchResults = '[data-testid="adv-search-get-results"]';
+
 export const commonElements = {
   testInitialSetUp: () => {
     cy.visit('');

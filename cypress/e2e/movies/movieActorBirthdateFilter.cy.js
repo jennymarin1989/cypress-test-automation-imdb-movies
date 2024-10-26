@@ -1,15 +1,18 @@
-import { commonElements } from '../commons/commonElements';
+import { commonElements, advanceSearchResults } from '../commons/commonElements';
 
 describe('IMDB Req_id 1.5, ', () => {
-  const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
   const currentMonthAndDate = commonElements.currentDateCalculation('MM-DD');
   const currentYearAndMonth = commonElements.currentDateCalculation('YYYY-MM');
   const currenYearMonthDate = commonElements.endOfCurrentMonthCalculation('YYYY-MM-DD');
   const fourtyYearsBackDate = commonElements.fourtyYearsBackCalculation('YYYY-MM-DD');
   const fourtyYearsBackYearAndMonth = commonElements.fourtyYearsBackCalculation('YYYY-MM');
   const startMonthCalculation = commonElements.startOfCurrentMonthCalculation('YYYY-MM-DD');
-  const birthdateDataTestID = `[data-testid="selected-input-chip-list-birthday-${currentMonthAndDate}"]`;
   const labelDisplayData = commonElements.dateLabelDisplay();
+  const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
+  const birthdateDataTestID = `[data-testid="selected-input-chip-list-birthday-${currentMonthAndDate}"]`;
+  const birthYearMonthStart = '[data-testid="birthYearMonth-start"]';
+  const birthDateStart = '[data-testid="birthDate-start"]';
+  const birthYearMonthEnd = '[data-testid="birthYearMonth-end"]';
 
   beforeEach(() => {
     commonElements.testInitialSetUp();
@@ -41,33 +44,29 @@ describe('IMDB Req_id 1.5, ', () => {
       cy.get(birthdateDataTestID).click();
       cy.get(birthdateDataTestID).should('not.exist');
       cy.get('.ipc-metadata-list').should('not.exist');
-      cy.get('[data-testid="adv-search-get-results"]').should('be.visible');
+      cy.get(advanceSearchResults).should('be.visible');
 
       //unfold birthday tab
       cy.get('[data-testid="accordion-item-birthDateAccordion"]').click();
 
-      cy.get('[data-testid="birthYearMonth-start"]').should('have.value', '').clear();
-      cy.get('[data-testid="birthDate-start"]').should('have.value', '').clear();
-      cy.get('[data-testid="birthYearMonth-end"]').should('have.value', '').clear();
+      cy.get(birthYearMonthStart).should('have.value', '').clear();
+      cy.get(birthDateStart).should('have.value', '').clear();
+      cy.get(birthYearMonthEnd).should('have.value', '').clear();
 
       //open date picker
-      // cy.get('[data-testid="birthDate-start"]').focus().trigger('keydown', { keyCode: 32, which: 32, force: true })
+      // cy.get(birthDateStart).focus().trigger('keydown', { keyCode: 32, which: 32, force: true })
 
-      cy.get('[data-testid="birthDate-start"]').focus().type(fourtyYearsBackDate);
-      cy.get('[data-testid="birthDate-start"]').should('have.value', fourtyYearsBackDate);
+      cy.get(birthDateStart).focus().type(fourtyYearsBackDate);
+      cy.get(birthDateStart).should('have.value', fourtyYearsBackDate);
 
-      cy.get('[data-testid="birthYearMonth-start"]')
-        .focus()
-        .should('have.value', fourtyYearsBackYearAndMonth);
-      cy.get('[data-testid="birthDate-start"]').focus().type(startMonthCalculation);
+      cy.get(birthYearMonthStart).focus().should('have.value', fourtyYearsBackYearAndMonth);
+      cy.get(birthDateStart).focus().type(startMonthCalculation);
 
-      cy.get('[data-testid="birthYearMonth-end"]')
-        .type(`${currentYearAndMonth}{enter}`)
-        .trigger('input');
+      cy.get(birthYearMonthEnd).type(`${currentYearAndMonth}{enter}`).trigger('input');
       cy.get('[data-testid="birthDate-end"]').focus().should('have.value', currenYearMonthDate);
 
       //click on see results
-      cy.get('[data-testid="adv-search-get-results"]').click();
+      cy.get(advanceSearchResults).click();
 
       //verify label with results
       cy.get('[data-testid="selected-input-chip-list-birthDate-Birth date"] span')

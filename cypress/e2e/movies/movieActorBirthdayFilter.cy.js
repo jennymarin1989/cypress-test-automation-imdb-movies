@@ -1,8 +1,8 @@
-import { commonElements } from '../commons/commonElements';
+import { commonElements, advanceSearchResults } from '../commons/commonElements';
 
 describe('IMDB Req_id 1.4, ', () => {
-  const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
   const currenDateAndMonth = commonElements.currentDateCalculation('MM-DD');
+  const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
 
   beforeEach(() => {
     commonElements.testInitialSetUp();
@@ -32,7 +32,7 @@ describe('IMDB Req_id 1.4, ', () => {
 
       //delete default search
       cy.get(`[data-testid=selected-input-chip-list-birthday-${currenDateAndMonth}]`).click();
-      cy.get('[data-testid="adv-search-get-results"]').should('be.visible');
+      cy.get(advanceSearchResults).should('be.visible');
 
       //unfold birthday tab
       cy.get('[data-testid="accordion-item-birthdayAccordion"]').click();
@@ -44,7 +44,7 @@ describe('IMDB Req_id 1.4, ', () => {
         .trigger('input');
 
       //click on see results
-      cy.get('[data-testid="adv-search-get-results"]').click();
+      cy.get(advanceSearchResults).click();
 
       //check label with day of birth
       cy.get(`[data-testid="selected-input-chip-list-birthday-${currenDateAndMonth}"] span`)

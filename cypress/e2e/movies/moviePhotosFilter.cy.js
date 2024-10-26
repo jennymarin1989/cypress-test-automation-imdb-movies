@@ -4,6 +4,8 @@ describe('IMDB Req_id 1.3, ', () => {
   const tvShowTitleElement = '[data-testid="chart-layout-sidebar-title-container"]';
   const tvShowContainer = '[data-testid="chart-layout-main-column"]';
   const movieTitleElement = '[data-testid="hero__pageTitle"]';
+  const actionBar = '[data-testid="action-bar"]';
+  const imageFilterContainer = '[data-testid="image-names-filter-container-test-id"]';
 
   beforeEach(() => {
     commonElements.testInitialSetUp();
@@ -54,10 +56,10 @@ describe('IMDB Req_id 1.3, ', () => {
       cy.url().should('contain', '/title/tt0903747/mediaviewer/');
 
       //should display the photo gallery
-      commonElements.checkContainerDisplay('[data-testid="action-bar"]');
+      commonElements.checkContainerDisplay(actionBar);
       commonElements.checkContainerDisplay('[data-testid="media-viewer__touch-handler"]');
 
-      cy.get('[data-testid="action-bar"]')
+      cy.get(actionBar)
         .find('[data-testid="action-bar__gallery-count"]')
         .next()
         .should('have.attr', 'href', '/title/tt0903747/mediaindex/?ref_=tt_mv_sm')
@@ -87,7 +89,7 @@ describe('IMDB Req_id 1.3, ', () => {
         .click();
 
       // check persons name are not active
-      cy.get('.ipc-promptable-base__content [data-testid="image-names-filter-container-test-id"]')
+      cy.get(`.ipc-promptable-base__content ${imageFilterContainer}`)
         .should('be.visible')
         .and('contain', moviesDatafilter.filterSection)
         .find('.ipc-chip-list__scroller')
@@ -96,7 +98,7 @@ describe('IMDB Req_id 1.3, ', () => {
         });
 
       // select danny trejo's name
-      cy.get('.ipc-promptable-base__content [data-testid="image-names-filter-container-test-id"]')
+      cy.get(`.ipc-promptable-base__content ${imageFilterContainer}`)
         .should('be.visible')
         .and('contain', moviesDatafilter.filterSection)
         .find('.ipc-select__field-container select')
@@ -104,7 +106,7 @@ describe('IMDB Req_id 1.3, ', () => {
         .select(moviesDatafilter.filterNameTvShow);
 
       // check modal danny trejo element
-      cy.get('.ipc-promptable-base__content [data-testid="image-names-filter-container-test-id"]')
+      cy.get(`.ipc-promptable-base__content ${imageFilterContainer}`)
         .find('.ipc-chip-list__scroller')
         .within(() => {
           cy.get('[data-testid*="filter-menu-chip"]')
