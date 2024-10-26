@@ -61,25 +61,25 @@ export const commonElements = {
   },
 
   startOfCurrentMonthCalculation: (dateFormat) => {
-    const yesterdayNewFormat = startDayOfMonth.format(dateFormat);
-    return yesterdayNewFormat;
+    const startOfCurrentMonth = startDayOfMonth.format(dateFormat);
+    return startOfCurrentMonth;
   },
 
   yesterdayDateCalculation: (dateformat) => {
-    const yesterdaydate = moment().subtract(1, 'days');
-    const yesterdayNewFormat = yesterdaydate.format(dateformat);
+    const yesterdayDate = moment().subtract(1, 'days');
+    const yesterdayNewFormat = yesterdayDate.format(dateformat);
     return yesterdayNewFormat;
   },
 
   fourtyYearsBackCalculation: (dateFormat) => {
-    const yesterdaydate = moment().subtract(40, 'years');
-    const yesterdayNewFormat = yesterdaydate.format(dateFormat);
-    return yesterdayNewFormat;
+    const fourtyYearsBackDate = moment().subtract(40, 'years');
+    const fourtyYearsBackFormat = fourtyYearsBackDate.format(dateFormat);
+    return fourtyYearsBackFormat;
   },
 
   dateLabelDisplay: () => {
-    const fourtyYearsDateLabel = startDayOfMonth.format('LL');
-    const currentDateLabel = lastDayOfMonth.format('LL');
-    return `${fourtyYearsDateLabel} to ${currentDateLabel}`;
+    const startOfMonth = startDayOfMonth.format('LL');
+    const lastDateOfMonth = lastDayOfMonth.format('LL');
+    return `${startOfMonth} to ${lastDateOfMonth}`;
   }
 };
