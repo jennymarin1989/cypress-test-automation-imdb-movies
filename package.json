@@ -20,6 +20,7 @@
     "prettier": "3.3.3"
   },
   "dependencies": {
+    "cypress-plugin-api": "^2.11.2",
     "moment": "^2.30.1"
   }
 }
