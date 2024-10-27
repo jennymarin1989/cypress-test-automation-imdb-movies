@@ -1,6 +1,6 @@
 import { commonElements } from '../commons/commonElements';
 
-describe('IMDB Req_id 1.3, ', () => {
+describe("IMDB Req_id 1.3, verify that user can access the photos of an elected Tv show and filter by actor's name", () => {
   const tvShowTitleElement = '[data-testid="chart-layout-sidebar-title-container"]';
   const tvShowContainer = '[data-testid="chart-layout-main-column"]';
   const movieTitleElement = '[data-testid="hero__pageTitle"]';
@@ -12,9 +12,9 @@ describe('IMDB Req_id 1.3, ', () => {
     cy.fixture('movies').as('moviesDatafilter');
   });
 
-  it('should be possible to filter photos by person in movie filter', () => {
+  it('TC_005 should be possible to filter photos by giving a person name in search filter', () => {
     cy.get('@moviesDatafilter').then((moviesDatafilter) => {
-      // check container display
+      //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
       commonElements.selectMenuOption(
         moviesDatafilter.titleTvShows,
@@ -46,13 +46,12 @@ describe('IMDB Req_id 1.3, ', () => {
       );
 
       //click on photos gallery
-      cy.get('[data-testid="hero-parent"]')
-        .find('[data-testid="hero__photo-link"]')
+      cy.get('[data-testid="hero-parent"] [data-testid="hero__photo-link"]')
         .should('have.attr', 'href', '/title/tt0903747/mediaviewer/rm4224482560/?ref_=tt_ov_m_sm')
         .and('have.text', moviesDatafilter.photoGallery)
         .click();
 
-      //should diplay the correct url
+      //should display the correct url
       cy.url().should('contain', '/title/tt0903747/mediaviewer/');
 
       //should display the photo gallery
@@ -82,13 +81,12 @@ describe('IMDB Req_id 1.3, ', () => {
         moviesDatafilter.tvShowName
       );
 
-      //click on filter and type Dannys name in person section
-      cy.get('.ipc-chip-dropdown')
-        .find('[data-testid="image-chip-dropdown-test-id"]')
+      //click on filter and type actor's name in person section
+      cy.get('.ipc-chip-dropdown [data-testid="image-chip-dropdown-test-id"]')
         .should('be.visible')
         .click();
 
-      // check persons name are not active
+      //check persons name button is not active
       cy.get(`.ipc-promptable-base__content ${imageFilterContainer}`)
         .should('be.visible')
         .and('contain', moviesDatafilter.filterSection)
@@ -97,7 +95,7 @@ describe('IMDB Req_id 1.3, ', () => {
           cy.get('[data-testid*="filter-menu-chip"]').should('have.attr', 'aria-pressed', 'false');
         });
 
-      // select danny trejo's name
+      //select actor's name
       cy.get(`.ipc-promptable-base__content ${imageFilterContainer}`)
         .should('be.visible')
         .and('contain', moviesDatafilter.filterSection)
@@ -105,7 +103,7 @@ describe('IMDB Req_id 1.3, ', () => {
         .and('have.value', '')
         .select(moviesDatafilter.filterNameTvShow);
 
-      // check modal danny trejo element
+      //check modal contains actor's name element
       cy.get(`.ipc-promptable-base__content ${imageFilterContainer}`)
         .find('.ipc-chip-list__scroller')
         .within(() => {
@@ -117,7 +115,7 @@ describe('IMDB Req_id 1.3, ', () => {
       //close modal
       cy.get('[data-testid="promptable__x"]  button').click();
 
-      //check photos page container
+      //check photos page contains actor's name
       commonElements.checkContainerDisplay('.ipc-page-section');
       commonElements.checkContainerDisplay('.ipc-page-content-container');
 
@@ -132,7 +130,7 @@ describe('IMDB Req_id 1.3, ', () => {
         moviesDatafilter.tvShowName
       );
 
-      //select second photo
+      //select second photo from actor's gallery
       cy.get('.ipc-page-content-container [data-testid="sub-section-images"]')
         .find('.ipc-image')
         .eq(1)
