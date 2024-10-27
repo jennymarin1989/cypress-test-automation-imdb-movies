@@ -1,6 +1,6 @@
 import { commonElements, searchInput } from '../commons/commonElements';
 
-describe('IMDB Req_id 1.1, verify actor name search functionality and access to the upcoming films', () => {
+describe('Req_id 1.1, verify actor name search functionality and access to the upcoming films', () => {
   const actorElementDisplay = '[data-testid="hero__pageTitle"]';
   const actorListItem = 'div [role="listbox"]';
   const titleID = '[data-testid="hero__primary-text"]';
@@ -14,7 +14,7 @@ describe('IMDB Req_id 1.1, verify actor name search functionality and access to 
     cy.fixture('movies').as('moviesDataActorSearch');
   });
 
-  it("TC_001, should search with valid actor's name and access the upcoming films", () => {
+  it("TC_movie_001, should search with valid actor's name and access the upcoming films", () => {
     cy.get('@moviesDataActorSearch').then((moviesDataActorSearch) => {
       //check the correct page url when loading
       cy.url().should('contain', '/');
@@ -47,7 +47,7 @@ describe('IMDB Req_id 1.1, verify actor name search functionality and access to 
     });
   });
 
-  it('TC_002, should search with empty value', () => {
+  it('TC_movie_002, should search with empty value', () => {
     cy.get('@moviesDataActorSearch').then((moviesDataEmptySearch) => {
       //search for valid name
       cy.get(searchInput).type('  {enter}');

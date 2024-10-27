@@ -1,6 +1,6 @@
 const apiBaseUrl = Cypress.env('pokemonApi');
 
-describe('pokeApi 2.3, verify that an api can filter a spicy berry by it’s potency and find the berry name details', () => {
+describe('Req_id 2.3, verify that an api can filter a spicy berry by it’s potency and find the berry name details', () => {
   it('TC_009, should be possible to return correct aplication.json', () => {
     cy.request(`${apiBaseUrl}/berry-flavor/spicy`).as('pokemonBerrySpicy');
     cy.get('@pokemonBerrySpicy')
@@ -9,17 +9,17 @@ describe('pokeApi 2.3, verify that an api can filter a spicy berry by it’s pot
       .should('include', 'application/json; charset=utf-8');
   });
 
-  it('TC_010, should be possible to return status response 200', () => {
+  it('TC_pokeApi_010, should be possible to return status response 200', () => {
     cy.request(`${apiBaseUrl}/berry-flavor/spicy`).as('pokemonBerrySpicy');
     cy.get('@pokemonBerrySpicy').its('status').should('equal', 200);
   });
 
-  it('TC_011, should be possible to validate content', () => {
+  it('TC_pokeApi_011, should be possible to validate content', () => {
     cy.request(`${apiBaseUrl}/berry-flavor/spicy`).as('pokemonBerrySpicy');
     cy.get('@pokemonBerrySpicy').its('body').should('include', { name: 'spicy' });
   });
 
-  it('TC_012, should be possible to find the berry name with strong potency flavor, check the status response and valid content', () => {
+  it('TC_pokeApi_012, should be possible to find the berry name with strong potency flavor, check the status response and valid content', () => {
     cy.request(`${apiBaseUrl}/berry-flavor/spicy`).as('pokemonBerrySpicy');
 
     cy.get('@pokemonBerrySpicy').then((response) => {

@@ -1,7 +1,6 @@
 import moment from 'moment';
 
 const navElementDisplay = 'nav[id="imdbHeader"]';
-const searchInput = 'input[id="suggestion-search"]';
 const searchButton = 'button[id="suggestion-search-button"]';
 const menuElement = 'label[id="imdbHeader-navDrawerOpen"]';
 const navLinkElement = '[data-testid="nav-link-category"]';
@@ -9,8 +8,11 @@ const optionFromMenuElement = '[data-testid="category-expando"]';
 const acceptCookiesElement = '[data-testid="accept-button"]';
 const startDayOfMonth = moment().utc().startOf('month').subtract(40, 'years');
 const lastDayOfMonth = moment().utc().endOf('month');
+const lastDateOfMonth = lastDayOfMonth.format('LL');
 
 export const advanceSearchResults = '[data-testid="adv-search-get-results"]';
+export const searchInput = 'input[id="suggestion-search"]';
+export const startOfMonth = startDayOfMonth.format('LL');
 
 export const commonElements = {
   testInitialSetUp: () => {
@@ -21,7 +23,7 @@ export const commonElements = {
   },
 
   checkContainerDisplay: (valueContainer) => {
-    cy.get(valueContainer, { timeout: 4000 }).should('be.visible');
+    cy.get(valueContainer, { timeout: 6000 }).should('be.visible');
   },
 
   checkTitleDisplay: (titleElementID, name) => {
@@ -34,7 +36,7 @@ export const commonElements = {
 
   setInputToSearch: (value) => {
     cy.get(searchInput).clear();
-    cy.get(searchInput).type(value);
+    cy.get(searchInput).should('have.value', '').type(value).and('have.value', value);
   },
 
   clickSearchButton: () => {
@@ -89,8 +91,6 @@ export const commonElements = {
   },
 
   dateLabelDisplay: () => {
-    const startOfMonth = startDayOfMonth.format('LL');
-    const lastDateOfMonth = lastDayOfMonth.format('LL');
     return `${startOfMonth} to ${lastDateOfMonth}`;
   }
 };

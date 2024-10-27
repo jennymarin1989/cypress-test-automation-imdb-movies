@@ -1,6 +1,6 @@
 import { commonElements } from '../commons/commonElements';
 
-describe('IMDB Req_id 1.2, Verify rating a movie from the Top Box Office list by giving stars ', () => {
+describe('Req_id 1.2, Verify rating a movie from the Top Box Office list by giving stars ', () => {
   const topBoxTitleElement = ' [data-testid="chart-layout-sidebar-title-container"]';
   const topBoxMoviesContainer = '[data-testid="chart-layout-main-column"]';
   const rateButtonElement = '[data-testid="rate-button"]';
@@ -10,7 +10,7 @@ describe('IMDB Req_id 1.2, Verify rating a movie from the Top Box Office list by
     cy.fixture('movies').as('moviesRateData');
   });
 
-  it('TC_003, should be possible to rate a movie by giving 5 stars', () => {
+  it('TC_movie_003, should be possible to rate a movie by giving 5 stars', () => {
     //check the correct page url when loading
     cy.get('@moviesRateData').then((moviesRateData) => {
       cy.url().should('contain', '/');
@@ -66,7 +66,7 @@ describe('IMDB Req_id 1.2, Verify rating a movie from the Top Box Office list by
     });
   });
 
-  it('TC_004, should not be possible to rate a movie if no stars are giving', () => {
+  it('TC_movie_004, should not be possible to rate a movie if no stars are giving', () => {
     cy.get('@moviesRateData').then((moviesRateData) => {
       cy.url().should('contain', '/');
 

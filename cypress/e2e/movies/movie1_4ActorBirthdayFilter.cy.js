@@ -1,6 +1,6 @@
 import { commonElements, advanceSearchResults } from '../commons/commonElements';
 
-describe('IMDB Req_id 1.4, verify that user can search for celebrities born yesterday ', () => {
+describe('Req_id 1.4, verify that user can search for celebrities born yesterday ', () => {
   const currenDateAndMonth = commonElements.currentDateCalculation('MM-DD');
   const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
 
@@ -9,7 +9,7 @@ describe('IMDB Req_id 1.4, verify that user can search for celebrities born yest
     cy.fixture('movies').as('moviesDataBirthday');
   });
 
-  it('TC_006, should the user search for celebrity by giving a valid date and take a snapshot of celebrity profile', () => {
+  it('TC_movie_006, should the user search for celebrity by giving a valid date and take a snapshot of celebrity profile', () => {
     cy.get('@moviesDataBirthday').then((moviesDataBirthday) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
@@ -64,7 +64,7 @@ describe('IMDB Req_id 1.4, verify that user can search for celebrities born yest
     });
   });
 
-  it.only('TC_007, user should not be able to the search for celebrity by giving an invalid date', () => {
+  it('TC_movie_007, user should not be able to the search for celebrity by giving an invalid date', () => {
     cy.get('@moviesDataBirthday').then((moviesDataBirthday) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');

@@ -1,6 +1,6 @@
 import { commonElements } from '../commons/commonElements';
 
-describe("IMDB Req_id 1.3, verify that user can access the photos of an elected Tv show and filter by actor's name", () => {
+describe("Req_id 1.3, verify that user can access the photos of an elected Tv show and filter by actor's name", () => {
   const tvShowTitleElement = '[data-testid="chart-layout-sidebar-title-container"]';
   const tvShowContainer = '[data-testid="chart-layout-main-column"]';
   const movieTitleElement = '[data-testid="hero__pageTitle"]';
@@ -12,7 +12,7 @@ describe("IMDB Req_id 1.3, verify that user can access the photos of an elected 
     cy.fixture('movies').as('moviesDatafilter');
   });
 
-  it('TC_005, should be possible to filter photos by giving a person name in search filter', () => {
+  it('TC_movie_005, should be possible to filter photos by giving a person name in search filter', () => {
     cy.get('@moviesDatafilter').then((moviesDatafilter) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');

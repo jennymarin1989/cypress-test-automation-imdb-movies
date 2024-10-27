@@ -1,6 +1,6 @@
 import { commonElements, advanceSearchResults, startOfMonth } from '../commons/commonElements';
 
-describe('IMDB Req_id 1.5, verify that user can search for celebrity by giving a valid fourty years back date and access the profile ', () => {
+describe('Req_id 1.5, verify that user can search for celebrity by giving a valid fourty years back date and access the profile ', () => {
   const currentMonthAndDate = commonElements.currentDateCalculation('MM-DD');
   const currentYearAndMonth = commonElements.currentDateCalculation('YYYY-MM');
   const currenYearMonthDate = commonElements.endOfCurrentMonthCalculation('YYYY-MM-DD');
@@ -19,7 +19,7 @@ describe('IMDB Req_id 1.5, verify that user can search for celebrity by giving a
     cy.fixture('movies').as('moviesDataBirthdate');
   });
 
-  it('TC008, should be possible to filter celebrities by giving birthdate from fourty years back', () => {
+  it('TC_movie_008, should be possible to filter celebrities by giving birthdate from fourty years back', () => {
     cy.get('@moviesDataBirthdate').then((moviesDataBirthdate) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
@@ -79,7 +79,7 @@ describe('IMDB Req_id 1.5, verify that user can search for celebrity by giving a
       cy.screenshot();
     });
   });
-  it('TC_009, should be possible to filter celebrities by giving birthdate from fourty years back to current month', () => {
+  it('TC_movie_009, should be possible to filter celebrities by giving birthdate from fourty years back to current month', () => {
     cy.get('@moviesDataBirthdate').then((moviesDataBirthdate) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
