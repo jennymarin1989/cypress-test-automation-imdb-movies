@@ -19,7 +19,7 @@ describe('IMDB Req_id 1.5, verify that user can search for celebrity by giving a
     cy.fixture('movies').as('moviesDataBirthdate');
   });
 
-  it('should be possible to filter celebrities by giving birthdate from fourty years back', () => {
+  it('TC008, should be possible to filter celebrities by giving birthdate from fourty years back', () => {
     cy.get('@moviesDataBirthdate').then((moviesDataBirthdate) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
@@ -79,7 +79,7 @@ describe('IMDB Req_id 1.5, verify that user can search for celebrity by giving a
       cy.screenshot();
     });
   });
-  it('should be possible to filter celebrities by giving birthdate from fourty years back to current month', () => {
+  it('TC_009, should be possible to filter celebrities by giving birthdate from fourty years back to current month', () => {
     cy.get('@moviesDataBirthdate').then((moviesDataBirthdate) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
