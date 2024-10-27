@@ -10,7 +10,7 @@ describe('IMDB Req_id 1.2, Verify rating a movie from the Top Box Office list by
     cy.fixture('movies').as('moviesRateData');
   });
 
-  it('TC_003 should be possible to rate a movie by giving 5 stars', () => {
+  it('TC_003, should be possible to rate a movie by giving 5 stars', () => {
     //check the correct page url when loading
     cy.get('@moviesRateData').then((moviesRateData) => {
       cy.url().should('contain', '/');
@@ -66,7 +66,7 @@ describe('IMDB Req_id 1.2, Verify rating a movie from the Top Box Office list by
     });
   });
 
-  it('TC_004 should not be possible to rate a movie if no stars are giving', () => {
+  it('TC_004, should not be possible to rate a movie if no stars are giving', () => {
     cy.get('@moviesRateData').then((moviesRateData) => {
       cy.url().should('contain', '/');
 

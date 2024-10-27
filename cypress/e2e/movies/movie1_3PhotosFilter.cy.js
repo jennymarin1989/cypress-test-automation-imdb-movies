@@ -12,7 +12,7 @@ describe("IMDB Req_id 1.3, verify that user can access the photos of an elected 
     cy.fixture('movies').as('moviesDatafilter');
   });
 
-  it('TC_005 should be possible to filter photos by giving a person name in search filter', () => {
+  it('TC_005, should be possible to filter photos by giving a person name in search filter', () => {
     cy.get('@moviesDatafilter').then((moviesDatafilter) => {
       //check container display
       commonElements.clickOnMenuButton('Open Navigation Drawer');
