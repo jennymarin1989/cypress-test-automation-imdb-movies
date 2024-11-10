@@ -1,5 +1,8 @@
+# Cypress IMDb test automation
+
 <div align="center">
     <img width="367" alt="header" src="https://github.com/user-attachments/assets/e8b11bb0-e0b8-4f35-89a4-3eb5fd8d09be"/>
+   
 </div>
 
 ## About this project...
