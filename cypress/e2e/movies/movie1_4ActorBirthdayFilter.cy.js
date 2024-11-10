@@ -2,6 +2,7 @@ import { commonElements, advanceSearchResults } from '../commons/commonElements'
 
 describe('Req_id 1.4, verify that user can search for celebrities born yesterday ', () => {
   const currenDateAndMonth = commonElements.currentDateCalculation('MM-DD');
+  const yesterdayDateAndMonth = commonElements.yesterdayDateCalculation('MM-DD');
   const tvShowTitleElement = '[data-testid="tabbed-page-title"]';
 
   beforeEach(() => {
@@ -40,15 +41,15 @@ describe('Req_id 1.4, verify that user can search for celebrities born yesterday
         .should('be.visible')
         .and('have.value', '')
         .focus()
-        .type(`${currenDateAndMonth}{enter}`)
+        .type(`${yesterdayDateAndMonth}{enter}`)
         .trigger('input');
 
       //click on see results
       cy.get(advanceSearchResults).click();
 
       //check label with day of birth
-      cy.get(`[data-testid="selected-input-chip-list-birthday-${currenDateAndMonth}"] span`)
-        .contains(`Birthday: ${currenDateAndMonth}`)
+      cy.get(`[data-testid="selected-input-chip-list-birthday-${yesterdayDateAndMonth}"] span`)
+        .contains(`Birthday: ${yesterdayDateAndMonth}`)
         .invoke('attr', 'style', 'position: relative')
         .should('be.visible');
 

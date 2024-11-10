@@ -4,7 +4,11 @@
 
 ## About this project...
 
-The main goal of this project is to systematically apply a set of activities in order to achieve a testing objective in different scenarios. In order to achieve these objectives, Cypress was used as a modern Javascript-based E2E framework, very powerful and easy to use to automate tests.
+The main goal of this project is to systematically apply a set of activities in order to achieve a testing objective in different scenarios on the IMDb website. In order to achieve these objectives, Cypress was used as a modern Javascript-based E2E framework, very powerful and easy to use.
+
+<div align="center">
+  <img width="147" alt="header" src="https://github.com/user-attachments/assets/64c36959-f2e0-4f67-b6cc-ed2bfc7c8e2d"/>
+</div>
 
 ## Approach
 

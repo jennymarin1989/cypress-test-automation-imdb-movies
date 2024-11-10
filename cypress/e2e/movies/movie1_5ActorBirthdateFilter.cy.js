@@ -118,7 +118,7 @@ describe('Req_id 1.5, verify that user can search for celebrity by giving a vali
       cy.get(birthDateStart).should('have.value', fourtyYearsBackDate);
 
       cy.get(birthYearMonthStart).focus().should('have.value', fourtyYearsBackYearAndMonth);
-      cy.get(birthDateStart).focus().type(startMonthCalculation);
+      cy.get(birthDateStart).focus().should('have.value', startMonthCalculation);
 
       //enter current month in the 'to' input
       cy.get(birthYearMonthEnd).type(`${currentYearAndMonth}{enter}`).trigger('input');
